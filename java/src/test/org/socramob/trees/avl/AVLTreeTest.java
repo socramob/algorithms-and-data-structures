@@ -1,6 +1,10 @@
-package org.socramob.avltree;
+package org.socramob.trees.avl;
 
 import org.junit.Test;
+import org.socramob.trees.avl.AVLTree;
+import org.socramob.trees.avl.Branch;
+import org.socramob.trees.avl.DefaultTreeVisitor;
+import org.socramob.trees.avl.EmptyTree;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package org.socramob.avltree;
+package org.socramob.trees.avl;
 
 
 class EmptyTree<T extends Comparable<T>> implements Tree<T> {

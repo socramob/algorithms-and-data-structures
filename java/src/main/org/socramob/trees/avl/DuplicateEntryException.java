@@ -1,4 +1,4 @@
-package org.socramob.avltree;
+package org.socramob.trees.avl;
 
 class DuplicateEntryException extends RuntimeException {
     private final Object element;

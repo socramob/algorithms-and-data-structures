@@ -1,7 +1,7 @@
-package org.socramob.avltree;
+package org.socramob.trees.avl;
 
 
-import static org.socramob.avltree.Branch.createBranch;
+import static org.socramob.trees.avl.Branch.createBranch;
 
 class BranchFunctions {
     static <T extends Comparable<T>> Tree<T> balance(Branch<T> tree) {

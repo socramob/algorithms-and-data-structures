@@ -1,14 +1,12 @@
-package org.socramob.avltree;
+package org.socramob.trees.avl;
 
-
-import static org.socramob.avltree.EmptyTree.emptyTree;
 
 public class AVLTree<T extends Comparable<T>> {
 
     private static final boolean INSERTION_SUCCESSFUL = true;
     private static final boolean INSERTION_FAILED = false;
 
-    private Tree<T> root = emptyTree();
+    private Tree<T> root = EmptyTree.emptyTree();
 
     public AVLTree() { }
 

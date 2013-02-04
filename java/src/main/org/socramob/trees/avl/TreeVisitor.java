@@ -1,4 +1,4 @@
-package org.socramob.avltree;
+package org.socramob.trees.avl;
 
 
 public interface TreeVisitor<T extends Comparable<T>> {

@@ -1,4 +1,4 @@
-package org.socramob.avltree;
+package org.socramob.trees.avl;
 
 public class DefaultTreeVisitor<T extends Comparable<T>> implements TreeVisitor<T> {
     @Override

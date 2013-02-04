@@ -1,7 +1,5 @@
-package org.socramob.avltree;
+package org.socramob.trees.avl;
 
-
-import static org.socramob.avltree.EmptyTree.emptyTree;
 
 class Branch<T extends Comparable<T>> implements Tree<T> {
 
@@ -25,7 +23,7 @@ class Branch<T extends Comparable<T>> implements Tree<T> {
     }
 
     private Branch(T value) {
-        this(value, emptyTree(), emptyTree());
+        this(value, EmptyTree.emptyTree(), EmptyTree.emptyTree());
     }
 
     boolean isLeaningToTheLeft() {
@@ -92,7 +90,7 @@ class Branch<T extends Comparable<T>> implements Tree<T> {
     @Override
     public Tree<T> delete(T element) throws ElementNotFound {
         if (rightSubtree().empty() && leftSubtree().empty()) {
-            return emptyTree();
+            return EmptyTree.emptyTree();
         } else if (rightSubtree().empty()) {
             return leftSubtree();
         } else if(leftSubtree().empty()) {
