@@ -15,7 +15,4 @@ public class UtilityFunctions {
         return array.length - 1;
     }
 
-    public static int lastElement(Object[] array) {
-        return array.length - 1;
-    }
 }

@@ -1,18 +1,16 @@
 package org.socramob.sorting.mergesort;
 
 import org.junit.Test;
+import org.socramob.lists.IntegerList;
 
-import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 public class MergeTest {
     @Test
-    public void given_two_empty_arrays__returns_an_empty_array() throws Exception {
-        Integer[] mergedArray = MergeSort.merge(emptyArray(), emptyArray());
+    public void given_two_empty_lists__returns_an_empty_list() throws Exception {
+        IntegerList mergedList = MergeSort.merge(IntegerList.emptyList(), IntegerList.emptyList());
 
-        assertArrayEquals(emptyArray(), mergedArray);
+        assertEquals(IntegerList.emptyList(), mergedList);
     }
 
-    private Integer[] emptyArray() {
-        return new Integer[0];
-    }
 }
