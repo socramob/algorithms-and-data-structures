@@ -1,12 +1,14 @@
 package org.socramob.sorting.selectionsort;
 
+import org.socramob.sorting.UtilityFunctions;
+
 public class SelectionSort {
     public static int[] sort(int[] numbers) {
         int[] sortedNumbers = numbers.clone();
 
         for (int nextPosition = 0; nextPosition < sortedNumbers.length - 1; nextPosition++) {
             int positionOfNextMinimum = positionOfMinimumWithin(sortedNumbers, nextPosition, sortedNumbers.length - 1);
-            swapPositions(sortedNumbers, nextPosition, positionOfNextMinimum);
+            UtilityFunctions.swapPositions(sortedNumbers, nextPosition, positionOfNextMinimum);
         }
         return sortedNumbers;
     }
@@ -21,9 +23,4 @@ public class SelectionSort {
         return positionOfMinimum;
     }
 
-    private static void swapPositions(int[] numbers, int positionA, int positionB) {
-        int temp = numbers[positionA];
-        numbers[positionA] = numbers[positionB];
-        numbers[positionB] = temp;
-    }
 }
