@@ -6,4 +6,16 @@ public class UtilityFunctions {
         numbers[positionA] = numbers[positionB];
         numbers[positionB] = temp;
     }
+
+    public static int firstElement() {
+        return 0;
+    }
+
+    public static int secondToLastElement(int[] array) {
+        return array.length - 1;
+    }
+
+    public static int lastElement(Object[] array) {
+        return array.length - 1;
+    }
 }

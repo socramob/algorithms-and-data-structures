@@ -19,7 +19,7 @@ public class BubbleSort {
 
     private static int[] orderNeighbors(int[] numbers) {
         int[] result = numbers.clone();
-        for (int position = firstElement(); position < secondToLastElement(result); position++) {
+        for (int position = UtilityFunctions.firstElement(); position < UtilityFunctions.secondToLastElement(result); position++) {
             boolean neighborsAreInRightOrder = result[position] <= result[position + 1];
             if (!neighborsAreInRightOrder) {
                 UtilityFunctions.swapPositions(result, position, position + 1);
@@ -28,11 +28,4 @@ public class BubbleSort {
         return result;
     }
 
-    private static int firstElement() {
-        return 0;
-    }
-
-    private static int secondToLastElement(int[] array) {
-        return array.length - 1;
-    }
 }
