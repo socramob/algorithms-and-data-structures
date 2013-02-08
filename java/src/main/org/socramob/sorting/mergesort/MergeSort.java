@@ -13,18 +13,33 @@ public class MergeSort {
     }
 
     public static IntegerList merge(IntegerList a, IntegerList b) {
-        Integer i = 0, j = 0;
+        return merge(a.iterator(), b.iterator());
+    }
+
+    private static IntegerList merge(IntegerList.Iterator iteratorA, IntegerList.Iterator iteratorB) {
         IntegerList result = IntegerList.emptyList();
 
-        while ((i < a.size()) && (j < b.size())) {
-            if (a.get(i) < b.get(j))
-                result.append(a.get(i++));
-            else
-                result.append(b.get(j++));
+        while (iteratorA.elementAvailable() && iteratorB.elementAvailable()) {
+            Integer elementOfA = iteratorA.getItem();
+            Integer elementOfB = iteratorB.getItem();
+            if (elementOfA < elementOfB) {
+                result.append(elementOfA);
+                iteratorA.proceed();
+            } else {
+                result.append(elementOfB);
+                iteratorB.proceed();
+            }
         }
 
-        while (i < a.size()) result.append(a.get(i++));
-        while (j < b.size()) result.append(b.get(j++));
+        while (iteratorA.elementAvailable()) {
+            result.append(iteratorA.getItem());
+            iteratorA.proceed();
+        }
+
+        while (iteratorB.elementAvailable()) {
+            result.append(iteratorB.getItem());
+            iteratorB.proceed();
+        }
 
         return result;
     }

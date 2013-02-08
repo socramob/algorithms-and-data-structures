@@ -102,18 +102,18 @@ public class IntegerList {
         return size() == 0;
     }
 
-    public IntegerListIterator iterator() {
-        return new IntegerListIterator();
+    public Iterator iterator() {
+        return new Iterator();
     }
 
     public Integer greatestAllowedIndex() {
         return size() - 1;
     }
 
-    public class IntegerListIterator {
+    public class Iterator {
         private Integer currentPosition;
 
-        private IntegerListIterator() {
+        private Iterator() {
             currentPosition = 0;
         }
 

@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 public class ListIteratorTest {
 
     IntegerList list;
-    IntegerList.IntegerListIterator iterator;
+    IntegerList.Iterator iterator;
 
     @Before
     public void setUp() {
