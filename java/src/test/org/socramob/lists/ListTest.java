@@ -58,6 +58,20 @@ public class ListTest {
         assertEquals(Integer.valueOf(5),  list.get(2));
     }
 
+    @Test(expected = IntegerList.IndexOutOfBoundsException.class)
+    public void get__throws_an_IndexOutOfBoundsException_when_requested_index_is_negative() {
+        IntegerList list = IntegerList.withItems(17, 42, 5);
+
+        list.get(-1);
+    }
+
+    @Test(expected = IntegerList.IndexOutOfBoundsException.class)
+    public void get__throws_an_IndexOutOfBoundsException_when_requested_index_is_greater_than_greatest_allowed_index() {
+        IntegerList list = IntegerList.withItems(17, 42, 5);
+
+        list.get(list.greatestAllowedIndex() + 1);
+    }
+
     @Test
     public void size_relates_to_the_number_of_items() throws Exception {
         assertEquals(Integer.valueOf(0), IntegerList.emptyList().size());
@@ -69,4 +83,5 @@ public class ListTest {
         assertTrue(IntegerList.emptyList().isEmpty());
         assertFalse(IntegerList.withItems(17).isEmpty());
     }
+
 }

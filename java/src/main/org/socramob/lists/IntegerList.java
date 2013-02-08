@@ -88,10 +88,47 @@ public class IntegerList {
     }
 
     public Integer get(Integer index) {
+        if(index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        if(index > greatestAllowedIndex()) {
+            throw new IndexOutOfBoundsException();
+        }
+
         return items[index];
     }
 
     public Boolean isEmpty() {
         return size() == 0;
     }
+
+    public IntegerListIterator iterator() {
+        return new IntegerListIterator();
+    }
+
+    public Integer greatestAllowedIndex() {
+        return size() - 1;
+    }
+
+    public class IntegerListIterator {
+        private Integer currentPosition;
+
+        private IntegerListIterator() {
+            currentPosition = 0;
+        }
+
+        public Integer getItem() {
+            return get(currentPosition);
+        }
+
+        public void proceed() {
+            currentPosition++;
+        }
+
+        public Boolean elementAvailable() {
+            return currentPosition <= greatestAllowedIndex();
+        }
+    }
+
+    public class IndexOutOfBoundsException extends RuntimeException { }
 }
