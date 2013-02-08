@@ -84,4 +84,22 @@ public class ListTest {
         assertFalse(IntegerList.withItems(17).isEmpty());
     }
 
+    @Test
+    public void copyOf_returns_a_new_instance_with_the_same_items() throws Exception {
+        IntegerList prototype = IntegerList.withItems(17, 42, 5);
+
+        IntegerList copy = IntegerList.copyOf(prototype);
+
+        assertEquals(prototype, copy);
+        assertNotSame(prototype, copy);
+    }
+
+    @Test
+    public void swapItems_exchanges_the_items_at_the_given_positions() throws Exception {
+        IntegerList list = IntegerList.withItems(17, 42, 5);
+
+        list.swapItemsAt(0, 2);
+
+        assertEquals(IntegerList.withItems(5, 42, 17), list);
+    }
 }

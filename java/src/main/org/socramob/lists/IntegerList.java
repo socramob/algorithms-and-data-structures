@@ -16,6 +16,25 @@ public class IntegerList {
         return new IntegerList(items);
     }
 
+    public static IntegerList copyOf(IntegerList prototype) {
+        IntegerList copy = new IntegerList();
+        Iterator prototypeIterator = prototype.iterator();
+        while (prototypeIterator.elementAvailable()) {
+            copy.append(prototypeIterator.getItem());
+            prototypeIterator.proceed();
+        }
+        return copy;
+    }
+
+    public static int firstPosition() {
+        return 0;
+    }
+
+    public int secondToLastPosition() {
+        return size() - 2;
+    }
+
+
     public IntegerList firstHalf() {
         IntegerList firstHalf = new IntegerList();
         for (int i = 0; i < middleIndex(); i++) {
@@ -108,6 +127,12 @@ public class IntegerList {
 
     public Integer greatestAllowedIndex() {
         return size() - 1;
+    }
+
+    public void swapItemsAt(Integer positionA, Integer positionB) {
+        Integer parkingSpace = get(positionA);
+        items[positionA] = get(positionB);
+        items[positionB] = parkingSpace;
     }
 
     public class Iterator {
