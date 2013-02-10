@@ -1,5 +1,6 @@
 package org.socramob.sorting.mergesort;
 
+import org.socramob.lists.ArrayIntegerList;
 import org.socramob.lists.IntegerList;
 
 public class MergeSort {
@@ -16,8 +17,8 @@ public class MergeSort {
         return merge(a.iterator(), b.iterator());
     }
 
-    private static IntegerList merge(IntegerList.Iterator iteratorA, IntegerList.Iterator iteratorB) {
-        IntegerList result = IntegerList.emptyList();
+    private static IntegerList merge(ArrayIntegerList.Iterator iteratorA, ArrayIntegerList.Iterator iteratorB) {
+        IntegerList result = ArrayIntegerList.emptyList();
 
         while (iteratorA.elementAvailable() && iteratorB.elementAvailable()) {
             Integer elementOfA = iteratorA.getItem();

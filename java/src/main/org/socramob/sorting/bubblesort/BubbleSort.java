@@ -1,5 +1,6 @@
 package org.socramob.sorting.bubblesort;
 
+import org.socramob.lists.ArrayIntegerList;
 import org.socramob.lists.IntegerList;
 
 public class BubbleSort {
@@ -16,7 +17,7 @@ public class BubbleSort {
     }
 
     private static IntegerList orderNeighbors(IntegerList numbers) {
-        IntegerList result = IntegerList.copyOf(numbers);
+        IntegerList result = ArrayIntegerList.copyOf(numbers);
         for (int position = result.firstPosition(); position <= result.secondToLastPosition(); position++) {
             boolean neighborsAreInRightOrder = (result.get(position) <= result.get(successor(position)));
             if (!neighborsAreInRightOrder) {

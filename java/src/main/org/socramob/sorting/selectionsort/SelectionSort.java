@@ -1,10 +1,11 @@
 package org.socramob.sorting.selectionsort;
 
+import org.socramob.lists.ArrayIntegerList;
 import org.socramob.lists.IntegerList;
 
 public class SelectionSort {
     public static IntegerList sort(IntegerList numbers) {
-        IntegerList sortedNumbers = IntegerList.copyOf(numbers);
+        IntegerList sortedNumbers = ArrayIntegerList.copyOf(numbers);
 
         for (Integer nextPosition = sortedNumbers.firstPosition(); nextPosition <= sortedNumbers.secondToLastPosition(); nextPosition++) {
             Integer positionOfNextMinimum = selectPositionOfMinimumWithin(sortedNumbers, nextPosition, sortedNumbers.size() - 1);

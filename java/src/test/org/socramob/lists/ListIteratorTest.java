@@ -9,11 +9,11 @@ import static org.junit.Assert.assertTrue;
 public class ListIteratorTest {
 
     IntegerList list;
-    IntegerList.Iterator iterator;
+    ArrayIntegerList.Iterator iterator;
 
     @Before
     public void setUp() {
-        list = IntegerList.withItems(0, 1, 2, 3);
+        list = ArrayIntegerList.withItems(0, 1, 2, 3);
     }
 
     @Test
