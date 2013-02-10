@@ -8,6 +8,12 @@ import static org.junit.Assert.assertEquals;
 
 public abstract class IntegerListTestTemplate {
 
+    private static final int NEGATIVE_INDEX = -1;
+
+    protected IntegerList anyList() {
+        return emptyList();
+    }
+
     protected abstract IntegerList copyList(IntegerList prototype);
 
     protected abstract IntegerList emptyList();
@@ -71,7 +77,7 @@ public abstract class IntegerListTestTemplate {
 
         assertEquals(Integer.valueOf(17), list.get(0));
         assertEquals(Integer.valueOf(42), list.get(1));
-        assertEquals(Integer.valueOf(5),  list.get(2));
+        assertEquals(Integer.valueOf(5), list.get(2));
     }
 
     @Test
@@ -101,6 +107,44 @@ public abstract class IntegerListTestTemplate {
 
         assertEquals(prototype, copy);
         assertNotSame(prototype, copy);
+    }
+
+    @Test
+    public void set__replaces_existing_elements_with_the_same_index() throws Exception {
+        IntegerList list = listWithItems(17, 42, 5);
+
+        list.set(1, 72);
+
+        assertEquals(listWithItems(17, 72, 5), list);
+    }
+
+    @Test(expected = IntegerList.IndexOutOfBoundsException.class)
+    public void set__throws_an_IndexOutOfBoundsException_when_the_index_is_negative() throws Exception {
+        anyList().set(NEGATIVE_INDEX, someValue());
+    }
+
+    private Integer someValue() {
+        return 72;
+    }
+
+    @Test
+    public void set__extends_the_list_when_the_index_is_behind_the_last_existig_element() throws Exception {
+        IntegerList list = anyList();
+        int greaterIndexThanExistingElements = list.size() + 3;
+
+        list.set(greaterIndexThanExistingElements, someValue());
+
+        assertEquals(someValue(), list.get(greaterIndexThanExistingElements));
+    }
+
+    @Test
+    public void set__fills_up_gaps_with_null_when_the_index_is_behind_the_last_existig_element() throws Exception {
+        IntegerList list = anyList();
+        int greaterIndexThanExistingElements = list.size() + 3;
+
+        list.set(greaterIndexThanExistingElements, someValue());
+
+        assertNull(list.get(greaterIndexThanExistingElements - 1));
     }
 
     @Test

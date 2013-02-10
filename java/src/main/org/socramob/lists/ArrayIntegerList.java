@@ -28,61 +28,23 @@ public class ArrayIntegerList extends IntegerList {
     }
 
     @Override
-    public ArrayIntegerList firstHalf() {
-        ArrayIntegerList firstHalf = new ArrayIntegerList();
-        for (int i = 0; i < middleIndex(); i++) {
-            firstHalf.append(this.get(i));
-        }
-        return firstHalf;
-    }
-
-    private int middleIndex() {
-        return size() / 2;
+    protected IntegerList createEmptyInstance() {
+        return ArrayIntegerList.emptyList();
     }
 
     @Override
-    public ArrayIntegerList secondHalf() {
-        ArrayIntegerList secondHalf = new ArrayIntegerList();
-        for (int i = middleIndex(); i < size(); i++) {
-            secondHalf.append(this.get(i));
+    public void set(int index, int value) {
+        if(index < 0) {
+            throw new IndexOutOfBoundsException();
         }
-        return secondHalf;
-    }
-
-    @Override
-    public boolean equals(Object thatObject) {
-        if(thatObject == null) {
-            return false;
+        if (index < size()) {
+            items[index] = value; return;
         }
-        if(!thatObject.getClass().isAssignableFrom(this.getClass())) {
-            return false;
+        if(index == size()) {
+            append(value); return;
         }
-        ArrayIntegerList that = (ArrayIntegerList) thatObject;
-        Object[] theseValues = this.items;
-        Object[] thoseValues = that.items;
-        if(theseValues.length != thoseValues.length) {
-            return false;
-        }
-        for (int i = 0; i < theseValues.length; i++) {
-            if(!theseValues[i].equals(thoseValues[i])) {
-               return false;
-           }
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        String result = "[";
-        if (items.length > 0) {
-            result += items[0].toString();
-            for (int i = 1; i < items.length; i++) {
-                result += ",";
-                result += items[i].toString();
-            }
-        }
-        result += "]";
-        return result;
+        append(null);
+        set(index, value);
     }
 
     @Override
@@ -124,18 +86,6 @@ public class ArrayIntegerList extends IntegerList {
         return new Iterator();
     }
 
-    @Override
-    public Integer greatestAllowedIndex() {
-        return size() - 1;
-    }
-
-    @Override
-    public void swapItemsAt(Integer positionA, Integer positionB) {
-        Integer parkingSpace = get(positionA);
-        items[positionA] = get(positionB);
-        items[positionB] = parkingSpace;
-    }
-
     public class Iterator implements IntegerListIterator {
         private Integer currentPosition;
 
@@ -159,5 +109,4 @@ public class ArrayIntegerList extends IntegerList {
         }
     }
 
-    public static class IndexOutOfBoundsException extends RuntimeException { }
 }
