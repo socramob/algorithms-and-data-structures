@@ -4,16 +4,20 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
-public class ListIteratorTest {
-
+public abstract class ListIteratorTestTemplate {
     IntegerList list;
-    ArrayIntegerList.Iterator iterator;
+    IntegerListIterator iterator;
+
+
+    protected abstract IntegerList emptyList();
+
+    protected abstract IntegerList listWithItems(Integer... items);
+
 
     @Before
     public void setUp() {
-        list = ArrayIntegerList.withItems(0, 1, 2, 3);
+        list = listWithItems(0, 1, 2, 3);
     }
 
     @Test

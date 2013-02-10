@@ -19,7 +19,7 @@ public class ArrayIntegerList extends IntegerList {
 
     public static ArrayIntegerList copyOf(IntegerList prototype) {
         ArrayIntegerList copy = new ArrayIntegerList();
-        Iterator prototypeIterator = prototype.iterator();
+        IntegerListIterator prototypeIterator = prototype.iterator();
         while (prototypeIterator.elementAvailable()) {
             copy.append(prototypeIterator.getItem());
             prototypeIterator.proceed();
@@ -120,7 +120,7 @@ public class ArrayIntegerList extends IntegerList {
     }
 
     @Override
-    public Iterator iterator() {
+    public IntegerListIterator iterator() {
         return new Iterator();
     }
 
@@ -136,21 +136,24 @@ public class ArrayIntegerList extends IntegerList {
         items[positionB] = parkingSpace;
     }
 
-    public class Iterator {
+    public class Iterator implements IntegerListIterator {
         private Integer currentPosition;
 
         private Iterator() {
             currentPosition = 0;
         }
 
+        @Override
         public Integer getItem() {
             return get(currentPosition);
         }
 
+        @Override
         public void proceed() {
             currentPosition++;
         }
 
+        @Override
         public Boolean elementAvailable() {
             return currentPosition <= greatestAllowedIndex();
         }

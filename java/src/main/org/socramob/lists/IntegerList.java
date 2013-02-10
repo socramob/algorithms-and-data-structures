@@ -32,6 +32,6 @@ public abstract class IntegerList {
 
     public abstract IntegerList secondHalf();
 
-    public abstract ArrayIntegerList.Iterator iterator();
+    public abstract IntegerListIterator iterator();
 
 }
