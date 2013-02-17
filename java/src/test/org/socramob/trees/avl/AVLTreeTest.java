@@ -1,10 +1,6 @@
 package org.socramob.trees.avl;
 
 import org.junit.Test;
-import org.socramob.trees.avl.AVLTree;
-import org.socramob.trees.avl.Branch;
-import org.socramob.trees.avl.DefaultTreeVisitor;
-import org.socramob.trees.avl.EmptyTree;
 
 import java.util.*;
 
@@ -16,75 +12,75 @@ public class AVLTreeTest {
 
     private Integer anElement = 17;
 
-    AVLTree<Integer> avlBaum;
+    AVLTree<Integer> avlTree;
 
     @Test
     public void shouldBeEmpty() {
-        avlBaum = anEmptyTree();
+        avlTree = anEmptyTree();
 
-        assertThat(avlBaum.empty(), is(true));
+        assertThat(avlTree.empty(), is(true));
     }
 
 
     @Test
     public void shouldNotBeEmpty_afterInsertingAnElement() {
-        avlBaum = anEmptyTree();
+        avlTree = anEmptyTree();
 
-        avlBaum.insert(anElement);
+        avlTree.insert(anElement);
 
-        assertThat(avlBaum.empty(), is(false));
+        assertThat(avlTree.empty(), is(false));
     }
 
 
     @Test
     public void should_increase_the_height() throws Exception {
-        avlBaum = anEmptyTree();
+        avlTree = anEmptyTree();
 
-        avlBaum.insert(anElement);
+        avlTree.insert(anElement);
 
-        assertThat(avlBaum.height(), is(1));
+        assertThat(avlTree.height(), is(1));
     }
 
     @Test
     public void with_two_encreasing_elements__should_increase_the_height() throws Exception {
-        avlBaum = anEmptyTree();
+        avlTree = anEmptyTree();
 
-        avlBaum.insert(1);
-        avlBaum.insert(2);
+        avlTree.insert(1);
+        avlTree.insert(2);
 
-        assertThat(avlBaum.height(), is(2));
+        assertThat(avlTree.height(), is(2));
     }
 
     @Test
     public void with_two_decreasing_elements__should_increase_the_height() throws Exception {
-        avlBaum = anEmptyTree();
+        avlTree = anEmptyTree();
 
-        avlBaum.insert(2);
-        avlBaum.insert(1);
+        avlTree.insert(2);
+        avlTree.insert(1);
 
-        assertThat(avlBaum.height(), is(2));
+        assertThat(avlTree.height(), is(2));
     }
 
     @Test
     public void with_three_increasing_elements__should_increase_the_height() throws Exception {
-        avlBaum = anEmptyTree();
+        avlTree = anEmptyTree();
 
-        avlBaum.insert(1);
-        avlBaum.insert(2);
-        avlBaum.insert(3);
+        avlTree.insert(1);
+        avlTree.insert(2);
+        avlTree.insert(3);
 
-        assertThat(avlBaum.height(), is(2));
+        assertThat(avlTree.height(), is(2));
     }
 
     @Test
     public void with_three_decreasing_elements__should_increase_the_height() throws Exception {
-        avlBaum = anEmptyTree();
+        avlTree = anEmptyTree();
 
-        avlBaum.insert(3);
-        avlBaum.insert(2);
-        avlBaum.insert(1);
+        avlTree.insert(3);
+        avlTree.insert(2);
+        avlTree.insert(1);
 
-        assertThat(avlBaum.height(), is(2));
+        assertThat(avlTree.height(), is(2));
     }
 
     private static AVLTree<Integer> anEmptyTree() {
@@ -118,108 +114,109 @@ public class AVLTreeTest {
 
     @Test
     public void should_delete_leaf() {
-        avlBaum = anEmptyTree();
+        avlTree = anEmptyTree();
 
-        avlBaum.insert(4);
+        avlTree.insert(4);
 
-        avlBaum.delete(4);
+        avlTree.delete(4);
 
-        assertThat(avlBaum.empty(), equalTo(true));
+        assertThat(avlTree.empty(), equalTo(true));
     }
 
     @Test
     public void should_replace_node_with_left_child() {
-        avlBaum = anEmptyTree();
+        avlTree = anEmptyTree();
 
-        avlBaum.insert(4);
-        avlBaum.insert(2);
+        avlTree.insert(4);
+        avlTree.insert(2);
 
-        avlBaum.delete(4);
+        avlTree.delete(4);
 
-        assertThat(avlBaum.height(), equalTo(1));
+        assertThat(avlTree.height(), equalTo(1));
     }
 
     @Test
     public void should_replace_node_with_right_child() {
-        avlBaum = anEmptyTree();
+        avlTree = anEmptyTree();
 
-        avlBaum.insert(4);
-        avlBaum.insert(6);
+        avlTree.insert(4);
+        avlTree.insert(6);
 
-        avlBaum.delete(4);
+        avlTree.delete(4);
 
-        assertThat(avlBaum.height(), equalTo(1));
-        assertThat(countNodesIn(avlBaum), equalTo(1));
+        assertThat(avlTree.height(), equalTo(1));
+        assertThat(countNodesIn(avlTree), equalTo(1));
     }
 
     @Test
     public void should_replace_node_with_two_children() {
-        avlBaum = anEmptyTree();
+        avlTree = anEmptyTree();
 
-        avlBaum.insert(4);
-        avlBaum.insert(2);
-        avlBaum.insert(6);
+        avlTree.insert(4);
+        avlTree.insert(2);
+        avlTree.insert(6);
 
-        avlBaum.delete(4);
+        avlTree.delete(4);
 
-        assertThat(countNodesIn(avlBaum), equalTo(2));
+        assertThat(countNodesIn(avlTree), equalTo(2));
     }
 
     @Test
     public void should_balance_after_deleting() {
-        avlBaum = anEmptyTree();
+        avlTree = anEmptyTree();
 
-        avlBaum.insert(4);
-        avlBaum.insert(2);
-        avlBaum.insert(6);
-        avlBaum.insert(1);
-        avlBaum.insert(3);
+        avlTree.insert(4);
+        avlTree.insert(2);
+        avlTree.insert(6);
+        avlTree.insert(1);
+        avlTree.insert(3);
 
-        avlBaum.insert(5);
-        avlBaum.insert(7);
+        avlTree.insert(5);
+        avlTree.insert(7);
 
-        assertThat(avlBaum.height(), equalTo(3));
-        assertTreeIsBalanced(avlBaum);
+        assertThat(avlTree.height(), equalTo(3));
+        assertTreeIsBalanced(avlTree);
 
-        avlBaum.delete(1);
-        avlBaum.delete(3);
-        avlBaum.delete(2);
+        avlTree.delete(1);
+        avlTree.delete(3);
+        avlTree.delete(2);
 
-        assertThat(avlBaum.height(), equalTo(3));
-        assertTreeIsBalanced(avlBaum);
+        assertThat(avlTree.height(), equalTo(3));
+        assertTreeIsBalanced(avlTree);
     }
 
     @Test
     public void random_test() {
-        avlBaum = anEmptyTree();
+        avlTree = anEmptyTree();
 
+        Random random = new Random();
         for(int i = 0; i < 1000; i++) {
-            avlBaum.insert(new Random().nextInt(1000));
-            assertTreeIsBalanced(avlBaum);
+            avlTree.insert(random.nextInt(1000));
+            assertTreeIsBalanced(avlTree);
         }
 
-        while(!avlBaum.empty()) {
-            avlBaum.delete(new Random().nextInt(1000));
-            assertTreeIsBalanced(avlBaum);
+        while(!avlTree.empty()) {
+            avlTree.delete(random.nextInt(1000));
+            assertTreeIsBalanced(avlTree);
         }
 
-        assertThat(avlBaum.empty(), equalTo(true));
+        assertThat(avlTree.empty(), equalTo(true));
     }
 
     @Test
     public void should_return_false_when_element_is_missing() {
-        avlBaum = anEmptyTree();
+        avlTree = anEmptyTree();
 
-        avlBaum.insert(4);
-        avlBaum.insert(2);
-        avlBaum.insert(6);
-        avlBaum.insert(1);
-        avlBaum.insert(3);
+        avlTree.insert(4);
+        avlTree.insert(2);
+        avlTree.insert(6);
+        avlTree.insert(1);
+        avlTree.insert(3);
 
-        avlBaum.insert(5);
-        avlBaum.insert(7);
+        avlTree.insert(5);
+        avlTree.insert(7);
 
-        assertThat(avlBaum.delete(100), equalTo(false));
+        assertThat(avlTree.delete(100), equalTo(false));
     }
 
     private void assertTreeIsBalanced(AVLTree<Integer> avlBaum) {
