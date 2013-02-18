@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/socramob/algorithms-and-data-structures.png)](https://travis-ci.org/socramob/algorithms-and-data-structures.png)
 Algorithms and Data Structures
 ===========================================
 
