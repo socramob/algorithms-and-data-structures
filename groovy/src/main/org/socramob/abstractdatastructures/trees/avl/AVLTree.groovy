@@ -1,4 +1,4 @@
-package org.socramob.trees.avl
+package org.socramob.abstractdatastructures.trees.avl
 
 class AVLTree {
 

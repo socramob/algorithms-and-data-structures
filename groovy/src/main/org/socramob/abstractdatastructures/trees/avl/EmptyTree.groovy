@@ -1,4 +1,4 @@
-package org.socramob.trees.avl
+package org.socramob.abstractdatastructures.trees.avl
 
 class EmptyTree implements Tree {
     private static final EmptyTree INSTANCE = new EmptyTree()
