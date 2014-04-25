@@ -81,11 +81,29 @@ public class ArrayQueueTest {
 
     @Test(expected = FullQueueException.class)
     public void should_throw_exception_when_queue_full() {
-        ArrayQueue queue = new ArrayQueue(4);
-        queue.enqueue(1);
-        queue.enqueue(1);
-        queue.enqueue(1);
-        queue.enqueue(1);
+        int capacity = 4;
+        ArrayQueue queue = new ArrayQueue(capacity);
+
+        for(int i = 0; i <= capacity; i++) {
+            queue.enqueue(1);
+        }
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception_when_initialized_with_negative_capacity() {
+        ArrayQueue queue = new ArrayQueue(-4);
+    }
+
+    @Test
+    public void should_not_throw_exception_unless_queue_is_full() {
+        int capacity = 4;
+        ArrayQueue queue = new ArrayQueue(capacity);
+
+        for(int i = 0; i < capacity; i++) {
+            queue.enqueue(1);
+        }
+
+        queue.dequeue();
         queue.enqueue(1);
     }
 
