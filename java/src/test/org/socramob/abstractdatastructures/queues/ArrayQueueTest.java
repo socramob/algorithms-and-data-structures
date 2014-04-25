@@ -50,6 +50,7 @@ public class ArrayQueueTest {
         assertThat(queue.dequeue(), is(equalTo(19)));
     }
 
+
     @Test(expected = EmptyQueueException.class)
     public void should_return_an_exception_on_empty_dequeue() {
         ArrayQueue queue = new ArrayQueue();
@@ -77,4 +78,15 @@ public class ArrayQueueTest {
         queue.dequeue();
         assertThat(queue.dequeue(), is(equalTo(3)));
     }
+
+    @Test(expected = FullQueueException.class)
+    public void should_throw_exception_when_queue_full() {
+        ArrayQueue queue = new ArrayQueue(4);
+        queue.enqueue(1);
+        queue.enqueue(1);
+        queue.enqueue(1);
+        queue.enqueue(1);
+        queue.enqueue(1);
+    }
+
 }

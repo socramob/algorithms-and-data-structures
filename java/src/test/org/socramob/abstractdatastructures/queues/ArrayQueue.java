@@ -3,26 +3,27 @@ package org.socramob.abstractdatastructures.queues;
 public class ArrayQueue {
 
     public static final int MAGIC_NUMBER_NO_ELEMENTS = -1;
-    int[] element = new int[] {MAGIC_NUMBER_NO_ELEMENTS};
+    private int enqueueIndex = 0;
+    int[] element = new int[3];
 
-    int dequeue = 1;
+    int dequeueIndex = 0;
+
+    public ArrayQueue(int size) {
+        //To change body of created methods use File | Settings | File Templates.
+    }
 
     public void enqueue(int element) {
-        if (this.element[0] == MAGIC_NUMBER_NO_ELEMENTS) {
-            this.element[0] = element;
-        }
+        this.element[enqueueIndex++] = element;
     }
 
     public int dequeue() {
-        if(this.element[0] == MAGIC_NUMBER_NO_ELEMENTS) {
+        if(isEmpty()) {
             throw new EmptyQueueException();
         }
-        if (dequeue == 3) {
-            return dequeue;
-        }
-        dequeue++;
-        int weirdNumber = this.element[0];
-        this.element[0] = 19;
-        return weirdNumber;
+        return this.element[dequeueIndex++];
+    }
+
+    public boolean isEmpty() {
+        return dequeueIndex >= enqueueIndex;
     }
 }
