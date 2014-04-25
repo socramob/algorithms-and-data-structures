@@ -66,4 +66,15 @@ public class ArrayQueueTest {
         assertThat(queue.dequeue(), is(equalTo(0)));
     }
 
+    @Test
+    public void should_return_the_third_element_after_two_calls_to_dequeue() {
+        ArrayQueue queue = new ArrayQueue();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+
+        queue.dequeue();
+        queue.dequeue();
+        assertThat(queue.dequeue(), is(equalTo(3)));
+    }
 }
