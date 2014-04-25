@@ -2,24 +2,21 @@ package org.socramob.abstractdatastructures.queues;
 
 public class ArrayQueue {
 
-    int[] elements;
-    int nextEnqueueIndex = 0;
-    int nextDequeueIndex = 0;
-
-    public ArrayQueue() {
-        this.elements = new int[3];
-    }
+    public static final int MAGIC_NUMBER_NO_ELEMENTS = -1;
+    int[] element = new int[] {MAGIC_NUMBER_NO_ELEMENTS};
 
     public void enqueue(int element) {
-        elements[nextEnqueueIndex++] = element;
+        if (this.element[0] == MAGIC_NUMBER_NO_ELEMENTS) {
+            this.element[0] = element;
+        }
     }
 
     public int dequeue() {
-        if(nextDequeueIndex >= nextEnqueueIndex) {
+        if(this.element[0] == MAGIC_NUMBER_NO_ELEMENTS) {
             throw new EmptyQueueException();
         }
-
-        return elements[nextDequeueIndex++];
+        int weirdNumber = this.element[0];
+        this.element[0] = 19;
+        return weirdNumber;
     }
-
 }
